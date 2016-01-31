@@ -255,23 +255,6 @@
 
             </div> <!-- item end -->
 
-<div class="row item">
-
-               <div class="twelve columns">
-			   <h3>Universal Wireless Touch Controller <span><a target="_blank" href="https://github.com/ashishvshenoy/wirelesstouchcontroller"><i class="fa fa-github"></i></a></span></h3>
-                  <p class="ng-binding"><span>&bull;</span> Universal Wireless Touch Controller (UWTC) is a remote communication application that connects your PC and a touch enabled mobile device. <br>
-
-<span>&bull;</span> UWTC is aimed at providing a solution of remote access to applications and software running on your PC that requires a touch input or feedback by using gesture based IO input to the OS on the PC.<br>
-
-<span>&bull;</span> Built on HTML5, Javascript, C# and with the help of Hammer.js library it is OS independent and one of a kind application built on the above said platform<br>
-
-<span>&bull;</span> Winning idea at #code12 hackathon organized at PESIT (2012)<br>
-<b> Technologies Used : Hammer.js, JavaScript, HTML5, WebSocket, C# </b></p>
-
-               </div>
-
-            </div> <!-- item end -->
-
          </div> <!-- main-col end -->
 
       </div> <!-- End Work -->
