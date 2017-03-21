@@ -225,4 +225,4 @@ The new update rules after calculating the
 gradient are as follows:  
 $$\Delta P = W\cdot(PQ^T - R)Q +2\lambda P$$  
 $$\Delta Q = (W\cdot(PQ^T - R))^TP +2\lambda Q$$  
-$$P\^[t+1]{} = P\^t -\alpha\Del$$
+$$P^[t+1]{} = P^t -\alpha \Del$$
