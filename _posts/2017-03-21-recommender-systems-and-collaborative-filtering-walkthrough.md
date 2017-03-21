@@ -239,5 +239,5 @@ either the item being rated or the user who is rating. Certain users
 consistently give higher ratings to items while sometimes the item
 always commands a higher rating from all the users. We use a first order
 approximation of the above bias as follows :
-$${b_i}_j = \mu + b_i + b_j$$ Where $\mu$ is the overall average rating
+$${b_i}_j = \mu + b_i + b_j$$ Where $$\mu$$ is the overall average rating
 for the item.
