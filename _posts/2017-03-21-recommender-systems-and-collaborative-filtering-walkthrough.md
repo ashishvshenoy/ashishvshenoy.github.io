@@ -71,6 +71,8 @@ Recommender systems typically produce a list of recommendations in one of two wa
 
 ![spotify_recommendation.png]({{site.baseurl}}/img/spotify_recommendation.png)
 
+![amazon_collab.png]({{site.baseurl}}/img/amazon_collab.png)
+
 
 The differences between collaborative and content-based filtering can be
 demonstrated by comparing two popular music recommender systems –
@@ -123,6 +125,8 @@ have 5 users and 7 movies. We can represent this users and video ratings
 information as a matrix such as the one in figure .  
 Our task now is to predict the ratings for all the entries with ?. We
 will use low dimensional matrix factorization method to accomplish this.  
+
+![matrix1.png]({{site.baseurl}}/img/matrix1.png)
 
 Low Dimensional Matrix Factorization
 ------------------------------------
