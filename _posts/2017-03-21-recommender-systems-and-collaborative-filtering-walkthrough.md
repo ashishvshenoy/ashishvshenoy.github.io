@@ -190,13 +190,13 @@ remove 2 during differentiation.
 $$e_{ij}^2 = \frac{1}{2}(r_{ij} - \hat{r}_{ij})^2 = \frac{1}{2}(r_{ij} - \sum_{k=1}^K{p_{ik}q_{kj}^T})^2\\$$
 
 Now we need to know the direction in which we should modify the values
-of $p_ik$ and $q_kj$. This can be obtained by calculating the gradient
+of $$p_ik$$ and $$q_kj$$. This can be obtained by calculating the gradient
 at the current value. This is done by differentiating the above equation
-with respect to $p_{ik}$ and $q_{kj}$ separately :  
-$$\frac{\partial}{\partial p_{ik}}e_{ij}^2 = -(r_{ij} - \hat{r}_{ij})(q_{kj})$$\
+with respect to $$p_{ik}$$ and $$q_{kj}$$ separately :    
+$$\frac{\partial}{\partial p_{ik}}e_{ij}^2 = -(r_{ij} - \hat{r}_{ij})(q_{kj})$$
 $$\frac{\partial}{\partial q_{ik}}e_{ij}^2 = -(r_{ij} - \hat{r}_{ij})(p_{ik})$$
 
-Now we can write the update rule for $p_{ik}$ and $q_{kj}$ as follows :
+Now we can write the update rule for $$p_{ik}$$ and $$q_{kj}$$ as follows :  
 $$p_{ik}^{t+1} = p_{ik}^t - \alpha \frac{\partial}{\partial p_{ik}^t}e_{ij}^2 = p_{ik}^t - \alpha (-r_{ij} + \hat{r}_{ij})q_{kj}^t$$
 $$q_{kj}^{t+1} = q_{kj}^t - \alpha \frac{\partial}{\partial q_{kj}^t}e_{ij}^2 = q_{kj}^t - \alpha (-r_{ij} + \hat{r}_{ij})p_{ik}^t$$
 
