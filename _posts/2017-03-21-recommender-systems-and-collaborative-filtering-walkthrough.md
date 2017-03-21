@@ -62,7 +62,6 @@ Recommender systems typically produce a list of recommendations in one of two wa
 -   **Content-based filtering**: This approach uses features of an item
     in order to recommend additional items with similar
     features/properties.  
-    
     Sometimes the above two approaches are often combined and termed as
     Hybrid Recommender Systems.
 
@@ -131,7 +130,7 @@ predict the rating of unknown movies. Also the number of features are
 very small as compared to number of users and movies. Now lets see the
 math behind matrix factorization. We need to obtain the two matrices:
 users(P) and movies(Q)  
-We have a $m \times n$ matrix of users and items and we need to find two
+We have a <span>$m \times n$</span> matrix of users and items and we need to find two
 matrices P($m \times k$) and Q($n  \times k$) such that their product
 approximates R. See Figure \ref{fig:matrixFactorization}. Note:
 $k \ll m,n$ $$R \approx P \times Q^T = \widehat{R}$$  
