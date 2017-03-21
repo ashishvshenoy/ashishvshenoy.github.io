@@ -64,6 +64,13 @@ Recommender systems typically produce a list of recommendations in one of two wa
     features/properties.  
     Sometimes the above two approaches are often combined and termed as
     Hybrid Recommender Systems.
+    
+![coll_filter.jpg]({{site.baseurl}}/img/coll_filter.jpg)
+
+![content_based.jpg]({{site.baseurl}}/img/content_based.jpg)
+
+![spotify_recommendation.png]({{site.baseurl}}/img/spotify_recommendation.png)
+
 
 The differences between collaborative and content-based filtering can be
 demonstrated by comparing two popular music recommender systems –
