@@ -228,8 +228,8 @@ gradient are as follows:
 $$\Delta P = W\cdot(PQ^T - R)Q +2\lambda P$$  
 $$\Delta Q = (W\cdot(PQ^T - R))^TP +2\lambda Q$$  
 $$P^{t+1} = P^t - \alpha \Delta P^t = P^t - \alpha(W\cdot(P^tQ^{T,t} - R)Q^t +\lambda P^t)$$
-$$Q^{t+1} = Q^t - \alpha \Delta Q^t = Q^t - \alpha((W\cdot(P^tQ^{T,t} - R))^TP^t +\lambda Q^t)$$
-Note: Multiplication factor 2 can be consumed in \lambda.
+$$Q^{t+1} = Q^t - \alpha \Delta Q^t = Q^t - \alpha((W\cdot(P^tQ^{T,t} - R))^TP^t +\lambda Q^t)$$  
+Note: Multiplication factor 2 can be consumed in $$\lambda$$.
 
 Biases
 ------
