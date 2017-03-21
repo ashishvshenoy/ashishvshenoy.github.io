@@ -23,8 +23,8 @@ description: I code therefore I am.
 
 # List of links in the navigation bar
 navbar-links:
-  Blog : "ashishvs.in"
-  About Me: "aboutme"
+  Blog : "http://ashishvs.in/"
+  About Me: "http://ashishs.in/aboutme.html"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
