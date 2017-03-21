@@ -13,7 +13,7 @@ information quickly in order to alleviate the problem of information
 overload. Recommender systems are used in almost every major website
 these days to solve this problem by searching through a large volume of
 dynamically generated information to provide users with personalized
-content and services. See [Figure 1]((https://www.ischool.utexas.edu/~i385q/readings/Balabanovic_Shoham-1997-Fab.pdf)).  
+content and services. See Figure 1[1]((https://www.ischool.utexas.edu/~i385q/readings/Balabanovic_Shoham-1997-Fab.pdf)).  
 
 ![RecommenderSystem.png]({{site.baseurl}}/img/RecommenderSystem.png)
 
