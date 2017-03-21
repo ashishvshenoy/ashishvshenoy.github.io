@@ -13,4 +13,11 @@ published: true
 -  [2016] **[Collaborative Filtering to Recommend Movies to Users](https://github.com/sardanaekta/movie-recommender-system){:target="_blank"}**
 -  [2015] **Machine Learning Approach Towards Predicting Twenty-20 Cricket Matches**
 
+##Big Data Systems
+-  [2016] **[PageRanking, Structured Streaming and Twitter Stream processing using Spark and Apache Storm](https://github.com/ashishvshenoy/twitter-stream-spark){:target="_blank"}**
+
+## Computer Vision
+
+-  [2016] **[View Morphing - An Automated Implementation](http://pages.cs.wisc.edu/~ashenoy/CS766/){:target="_blank"}**
+-  [2016] **[Image refocusing app]
 ---
