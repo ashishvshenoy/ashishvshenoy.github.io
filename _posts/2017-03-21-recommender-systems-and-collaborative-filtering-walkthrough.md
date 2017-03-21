@@ -212,15 +212,16 @@ Regularization
 --------------
 
 The above algorithm can lead to overfitting. To avoid this, we use L2
-regularization to minimize the norm of the residual as follows :
-$$e_{ij}^2 = \frac{1}{2}\times w_{ij}(r_{ij} - \sum_{k=1}^K{p_{ik}q_{kj}^T})^2 + \lambda {(||P||^2 + ||Q||^2)}$$
+regularization to minimize the norm of the residual as follows :  
+$$e_{ij}^2 = \frac{1}{2}\times w_{ij}(r_{ij} - \sum_{k=1}^K{p_{ik}q_{kj}^T})^2 + \lambda {(||P||^2 + ||Q||^2)}$$  
 $$\lambda$$ provides a knob on the magnitudes of the user-feature and
 video-feature vectors. It ensures that P and Q would give a good
 approximation of R without having to contain large numbers. Thus our
-objective function now becomes:
-$$\min_{P,Q} \frac{1}{2}||W\cdot(R-PQ^T)||^2 + \lambda(||P||^2 + ||Q||^2)$$
-Here W is the indicator matrix i.e. $w_{ij} = 1$ if $r_{ij}$ is observed
-and $w_{ij} = 0$ otherwise. The new update rules after calculating the
+objective function now becomes:  
+$$\min_{P,Q} \frac{1}{2}||W\cdot(R-PQ^T)||^2 + \lambda(||P||^2 + ||Q||^2)$$  
+Here W is the indicator matrix i.e. $$w_{ij} = 1$$ if $$r_{ij}$$ is observed
+and $$w_{ij} = 0$$ otherwise.  
+The new update rules after calculating the
 gradient are as follows:  
 $$\Delta P = W\cdot(PQ^T - R)Q +2\lambda P$$  
 $$\Delta Q = (W\cdot(PQ^T - R))^TP +2\lambda Q$$  
