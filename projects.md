@@ -29,4 +29,5 @@ published: true
 ## Research
 
 -  [2016] **[HelpCare Connect - Utilizing Machine Learning to recommend strategies to tackle Alzheimer Disease behavior.](http://wernerlab.engr.wisc.edu/helpcare_connect.html){:target="_blank"}**
+
 ---
