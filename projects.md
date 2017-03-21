@@ -20,8 +20,8 @@ published: true
 -  [2016] **[View Morphing - An Automated Implementation](http://pages.cs.wisc.edu/~ashenoy/CS766/){:target="_blank"}**
 
 ## Hackathons
--  [2016] **[Farmr - HackIllinois 2016 Winning Entry](https://devpost.com/software/farmr){:target="_blank"}**
 -  [2016 - 2017] **[HealthLinks - HFES Student Design Competition Top 3 Finalist] (http://wernerlab.engr.wisc.edu/hfes_health_links.html){:target="_blank"}**
+-  [2016] **[Farmr - HackIllinois 2016 Winning Entry](https://devpost.com/software/farmr){:target="_blank"}**
 
 ## Research
 -  [2016 - 2017] **[HelpCare Connect - Utilizing Machine Learning to recommend strategies to tackle Alzheimer Disease behavior.](http://wernerlab.engr.wisc.edu/helpcare_connect.html){:target="_blank"}**
