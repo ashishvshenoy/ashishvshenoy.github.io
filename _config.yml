@@ -25,6 +25,7 @@ description: I code therefore I am.
 navbar-links:
   Blog : "http://ashishvs.in/"
   About Me: "http://ashishvs.in/aboutme"
+  Projects : "http://ashishvs.in/projects"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
