@@ -19,5 +19,5 @@ published: true
 ## Computer Vision
 
 -  [2016] **[View Morphing - An Automated Implementation](http://pages.cs.wisc.edu/~ashenoy/CS766/){:target="_blank"}**
--  [2016] **[Image refocusing app]
+-  [2016] **[Image refocusing app]**
 ---
