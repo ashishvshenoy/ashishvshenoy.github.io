@@ -221,6 +221,7 @@ objective function now becomes:
 $$\min_{P,Q} \frac{1}{2}||W\cdot(R-PQ^T)||^2 + \lambda(||P||^2 + ||Q||^2)$$
 Here W is the indicator matrix i.e. $w_{ij} = 1$ if $r_{ij}$ is observed
 and $w_{ij} = 0$ otherwise. The new update rules after calculating the
-gradient are as follows: $$\Delta P = W\cdot(PQ^T - R)Q +2\lambda P$$
-$$\Delta Q = (W\cdot(PQ^T - R))^TP +2\lambda Q$$ 
+gradient are as follows:  
+$$\Delta P = W\cdot(PQ^T - R)Q +2\lambda P$$  
+$$\Delta Q = (W\cdot(PQ^T - R))^TP +2\lambda Q$$  
 $$P\^[t+1]{} = P\^t -\alpha\Del$$
