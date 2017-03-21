@@ -130,10 +130,10 @@ predict the rating of unknown movies. Also the number of features are
 very small as compared to number of users and movies. Now lets see the
 math behind matrix factorization. We need to obtain the two matrices:
 users(P) and movies(Q)  
-We have a <span>$m \times n$</span> matrix of users and items and we need to find two
-matrices P($m \times k$) and Q($n  \times k$) such that their product
+We have a $$m \times n$$ matrix of users and items and we need to find two
+matrices P($$m \times k$$) and Q($$n  \times k$$) such that their product
 approximates R. See Figure \ref{fig:matrixFactorization}. Note:
-$k \ll m,n$ $$R \approx P \times Q^T = \widehat{R}$$  
+$$k \ll m,n$$ $$R \approx P \times Q^T = \widehat{R}$$  
 
 **Why not SVD?**  
 You must be wondering why we are not using SVD for factorization. The
