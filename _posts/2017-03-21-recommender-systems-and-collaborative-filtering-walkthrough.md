@@ -15,7 +15,7 @@ these days to solve this problem by searching through a large volume of
 dynamically generated information to provide users with personalized
 content and services. See Figure 1.[^fn1]
 [^fn1: (https://www.ischool.utexas.edu/~i385q/readings/Balabanovic_Shoham-1997-Fab.pdf)]
-![]({{site.baseurl}}/)![RecommenderSystem.png]({{site.baseurl}}/img/RecommenderSystem.png)
+![RecommenderSystem.png]({{site.baseurl}}/img/RecommenderSystem.png)
 
 After completing this walkthrough you should be able to :
 
