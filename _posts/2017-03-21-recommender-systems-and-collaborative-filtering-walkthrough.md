@@ -174,25 +174,25 @@ Gradient Descent
 
 ![gradient_descen.png]({{site.baseurl}}/img/gradient_descen.png)
 
-How do we now find the matrices \mathbf{P} and \mathbf{Q}? The idea
+How do we now find the matrices P and Q? The idea
 behind finding the values for these two matrices is that their products
-should nearly be the same as the one in figure \ref{ratings} along with
-the predicted values for the missing values.\
-To do this, we can start off by initializing \mathbf{P} and \mathbf{Q}
+should nearly be the same as the one in figure above along with
+the predicted values for the missing values.  
+To do this, we can start off by initializing P and Q
 with random values and use gradient descent to find the local minima of
 the difference between the actual matrix and the calculated matrix
-iteratively.\
+iteratively.  
 We can write the error between the estimated rating and actual rating
 for every user-video pair as given below. Our task here is to minimize
-the error in each individual rating.\
+the error in each individual rating.  
 Note: Objective function is multiplied by a factor of 1/2 in order to
-remove 2 during differentiation.
+remove 2 during differentiation.  
 $$e_{ij}^2 = \frac{1}{2}(r_{ij} - \hat{r}_{ij})^2 = \frac{1}{2}(r_{ij} - \sum_{k=1}^K{p_{ik}q_{kj}^T})^2\\$$
 
 Now we need to know the direction in which we should modify the values
 of $p_ik$ and $q_kj$. This can be obtained by calculating the gradient
 at the current value. This is done by differentiating the above equation
-with respect to $p_{ik}$ and $q_{kj}$ separately :\
+with respect to $p_{ik}$ and $q_{kj}$ separately :  
 $$\frac{\partial}{\partial p_{ik}}e_{ij}^2 = -(r_{ij} - \hat{r}_{ij})(q_{kj})$$\
 $$\frac{\partial}{\partial q_{ik}}e_{ij}^2 = -(r_{ij} - \hat{r}_{ij})(p_{ik})$$
 
@@ -204,8 +204,8 @@ Weighted Objective Function
 ---------------------------
 
 In order to penalize only the known rating we will be using weighted
-objected function where $w_{ij} = 1$ if $r_{ij}$ is observed and
-$w_{ij} = 0$ otherwise.
+objected function where $$w_{ij} = 1$$ if $$r_{ij}$$ is observed and
+$$w_{ij} = 0$$ otherwise.
 $$\min_{P,Q} \frac{1}{2}\times w_{ij}(r_{ij} - \sum_{k=1}^K{p_{ik}q_{kj}^T})^2$$
 
 Regularization
@@ -214,7 +214,7 @@ Regularization
 The above algorithm can lead to overfitting. To avoid this, we use L2
 regularization to minimize the norm of the residual as follows :
 $$e_{ij}^2 = \frac{1}{2}\times w_{ij}(r_{ij} - \sum_{k=1}^K{p_{ik}q_{kj}^T})^2 + \lambda {(||P||^2 + ||Q||^2)}$$
-$\lambda$ provides a knob on the magnitudes of the user-feature and
+$$\lambda$$ provides a knob on the magnitudes of the user-feature and
 video-feature vectors. It ensures that P and Q would give a good
 approximation of R without having to contain large numbers. Thus our
 objective function now becomes:
@@ -222,5 +222,5 @@ $$\min_{P,Q} \frac{1}{2}||W\cdot(R-PQ^T)||^2 + \lambda(||P||^2 + ||Q||^2)$$
 Here W is the indicator matrix i.e. $w_{ij} = 1$ if $r_{ij}$ is observed
 and $w_{ij} = 0$ otherwise. The new update rules after calculating the
 gradient are as follows: $$\Delta P = W\cdot(PQ^T - R)Q +2\lambda P$$
-$$\Delta Q = (W\cdot(PQ^T - R))^TP +2\lambda Q$$ $$P\^[t+1]{} = P\^t -
-\alpha\Del
+$$\Delta Q = (W\cdot(PQ^T - R))^TP +2\lambda Q$$ 
+$$P\^[t+1]{} = P\^t -\alpha\Del$$
