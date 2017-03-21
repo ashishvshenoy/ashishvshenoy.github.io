@@ -3,6 +3,8 @@ layout: post
 published: true
 title: Recommender Systems and Collaborative Filtering - Walkthrough
 ---
+This is a walkthrough of Collaborative Filteirng that I wrote for a class.
+
 Summary
 =======
 
