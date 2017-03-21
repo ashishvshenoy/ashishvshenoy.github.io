@@ -42,7 +42,7 @@ are a subclass of information filtering systems that seek to predict the
 of recommender systems include: movies, music, news, books, research
 articles, search queries, social tags, and products. For example,
 recommending news articles to on-line newspaper readers.  
-**Basic Concepts :**
+**Basic Concepts :**  
 **User:** any individual who provides ratings to a system. User who
 provides provides ratings ratings and user who receive receive
 recommendations recommendations.  
@@ -61,35 +61,35 @@ Recommender systems typically produce a list of recommendations in one of two wa
 
 -   **Content-based filtering**: This approach uses features of an item
     in order to recommend additional items with similar
-    features/properties.\
-     \
+    features/properties.  
+    
     Sometimes the above two approaches are often combined and termed as
     Hybrid Recommender Systems.
 
 The differences between collaborative and content-based filtering can be
 demonstrated by comparing two popular music recommender systems –
-Last.fm and Pandora Radio.\
+Last.fm and Pandora Radio.  
 Last.fm creates a “station” of recommended songs by observing what bands
 and individual tracks the user has listened to on a regular basis and
 comparing those against the listening behavior of other users. Last.fm
 will play tracks that do not appear in the user’s library, but are often
 played by other users with similar interests. As this approach leverages
 the behavior of users, it is an example of a collaborative filtering
-technique.\
+technique.  
 Pandora uses the properties of a song or artist (a subset of the 400
 attributes provided by the Music Genome Project) in order to seed a
 “station” that plays music with similar properties. User feedback is
 used to refine the station’s results, deemphasizing certain attributes
 when a user “dislikes” a particular song and emphasizing other
 attributes when a user “likes” a song. This is an example of a
-content-based approach.\
+content-based approach.  
 Each type of system has its own strengths and weaknesses. In the above
 example, Last.fm requires a large amount of information on a user in
 order to make accurate recommendations. This is an example of the cold
 start problem, and is common in collaborative filtering systems. While
 Pandora needs very little information to get started, it is far more
 limited in scope (for example, it can only make recommendations that are
-similar to the original seed).
+similar to the original seed).  
 
 Recommender systems are a useful alternative to search algorithms since
 they help users discover items they might not have found by themselves.
