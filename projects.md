@@ -17,6 +17,6 @@ published: true
 -  [2016] **[PageRanking, Structured Streaming and Twitter Stream processing using Spark and Apache Storm](https://github.com/ashishvshenoy/twitter-stream-spark){:target="_blank"}**
 
 ## Computer Vision
-
 -  [2016] **[View Morphing - An Automated Implementation](http://pages.cs.wisc.edu/~ashenoy/CS766/){:target="_blank"}**
+
 ---
