@@ -19,4 +19,7 @@ published: true
 ## Computer Vision
 -  [2016] **[View Morphing - An Automated Implementation](http://pages.cs.wisc.edu/~ashenoy/CS766/){:target="_blank"}**
 
+## Hackathons
+-  [2016] **[Farmr - HackIllinois 2016 Winning Entry](https://devpost.com/software/farmr){:target="_blank"}**
+
 ---
