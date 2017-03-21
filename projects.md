@@ -23,7 +23,7 @@ published: true
 
 ## Hackathons
 
--  [2017] **[HealthLinks - HFES Student Design Competition Top 3 Finalist] (http://wernerlab.engr.wisc.edu/hfes_health_links.html){:target="_blank"}**
+-  [2017] **[HealthLinks - HFES Student Design Competition Top 3 Finalist](http://wernerlab.engr.wisc.edu/hfes_health_links.html){:target="_blank"}**
 -  [2016] **[Farmr - HackIllinois 2016 Winning Entry](https://devpost.com/software/farmr){:target="_blank"}**
 
 ## Research
