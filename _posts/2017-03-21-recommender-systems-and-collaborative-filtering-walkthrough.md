@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: Recommender Systems and Collaborative Filtering - Walkthrough
 ---
 Summary
