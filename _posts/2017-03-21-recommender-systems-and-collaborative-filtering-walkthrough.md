@@ -32,3 +32,23 @@ After completing this walkthrough you should be able to :
 
 -   Get a hands on experience on building a collaborative filtering
     recommender system for a real-life dataset.
+    
+Background {#sec:examples}
+==========
+
+Recommender systems have become extremely popular in recent years. They
+are a subclass of information filtering systems that seek to predict the
+“rating” or “preference” that a user would give to an item. Applications
+of recommender systems include: movies, music, news, books, research
+articles, search queries, social tags, and products. For example,
+recommending news articles to on-line newspaper readers.\
+**Basic Concepts :**[@cmu_slides]\
+**User:** any individual who provides ratings to a system. User who
+provides provides ratings ratings and user who receive receive
+recommendations recommendations.\
+**Item:** anything for which a human can provide a rating. Eg. art,
+books, CDs, journal articles, music, movie, or vacation destinations\
+**Ratings:** vote from a user for an item by means of some value.
+Scalar/ordinal ratings (5 points Likert scale), binary ratings ( )
+like/dislike), unary rating (observed/abase of rating).\
+Recommender systems typically produce a list of recommendations in one of two ways – through collaborative and content-based filtering.
