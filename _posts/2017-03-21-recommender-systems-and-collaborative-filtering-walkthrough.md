@@ -227,4 +227,17 @@ The new update rules after calculating the
 gradient are as follows:  
 $$\Delta P = W\cdot(PQ^T - R)Q +2\lambda P$$  
 $$\Delta Q = (W\cdot(PQ^T - R))^TP +2\lambda Q$$  
-$$P^[t+1]{} = P^t -\alpha \Del$$
+$$P^{t+1} = P^t - \alpha \Delta P^t = P^t - \alpha(W\cdot(P^tQ^{T,t} - R)Q^t +\lambda P^t)$$
+$$Q^{t+1} = Q^t - \alpha \Delta Q^t = Q^t - \alpha((W\cdot(P^tQ^{T,t} - R))^TP^t +\lambda Q^t)$$
+Note: Multiplication factor 2 can be consumed in \lambda.
+
+Biases
+------
+
+The variation in rating values is most of the times associated with
+either the item being rated or the user who is rating. Certain users
+consistently give higher ratings to items while sometimes the item
+always commands a higher rating from all the users. We use a first order
+approximation of the above bias as follows :
+$${b_i}_j = \mu + b_i + b_j$$ Where $\mu$ is the overall average rating
+for the item.
