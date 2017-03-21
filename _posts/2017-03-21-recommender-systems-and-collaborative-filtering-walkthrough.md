@@ -247,7 +247,7 @@ Lab
 
 Now let’s perform a more thorough analysis of collaborative filtering
 using matrix factorization method. To do this we will use the dataset
-available here : <http://grouplens.org/datasets/movielens/100k/>\
+available here : <http://grouplens.org/datasets/movielens/100k/>  
 The goal of this exercise is to build a recommendation system for IMDB.
 More specifically :
 
@@ -258,7 +258,7 @@ More specifically :
     that minimizes the below function.
     $$\min_{M,U} \frac{1}{2}||R\cdot(Y - MU^T)||_F^2 + \lambda(||M||_F^2 + ||U||_F^2)$$
     Here M is the movie matrix, U is the user matrix, R is the indicator
-    weight matrix $||\cdot||_F$ is Frobenius norm, the operator $\cdot$
+    weight matrix $$||\cdot||_F$$ is Frobenius norm, the operator $$\cdot$$
     means the dot product and $\lambda$ is the regularization parameter.
 
 -   Understand the impact of increasing or decreasing the number of
@@ -278,12 +278,12 @@ many files and asks you to merge the files using specific commands we
 have merged the data for you and have created training and testing
 datasets. The dataset in total has 100K ratings. We will be using 80K
 for training and 20K for testing. **`train_all.mat`** has two matrices
-each of size $1682 \times 943$ matrix. In **`Rating_train`**(Y) each
+each of size $$1682 \times 943$$ matrix. In **`Rating_train`**(Y) each
 entry (i,j) is the rating given to the ith movie by jth user and
 **`L_train`**(R) is the corresponding indicator matrix. Similarly
 **`test_all.mat`** has two matrices each of size $1682 \times 943$
 matrix. **`test_Y`** represents the corresponding test rating matrix and
-**`test_R`** as the corresponding test indicator matrix.\
+**`test_R`** as the corresponding test indicator matrix.  
 Write the MATLAB code to load **`train_all.mat`** and **`test_all.mat`**
 and verify the above.
 
@@ -291,10 +291,10 @@ Initialize learning rate, regularization parameter and maximum number of iterati
 -----------------------------------------------------------------------------------
 
 Now that the dataset is loaded and we have the training and testing set,
-we can now initialize the following tuning parameters :\
-alpha = 0.001\
-lambda = 10\
-max\_iter = 500
+we can now initialize the following tuning parameters :  
+$$alpha = 0.001  
+lambda = 10  
+max\_iter = 500$$  
 
 Initialize the M(movies) and U(users) matrix
 --------------------------------------------
@@ -308,10 +308,10 @@ Gradient Descent
 ----------------
 
 Now that you have the M(movies) and U(users) matrices, write code to
-update M and U using gradient descent method :
-$$M^{t+1} =  M^t - \alpha(R\cdot(M^tU^{t,T}-Y)U^t +\lambda M^t)$$
-$$U^{t+1} =  U^t - \alpha((R\cdot(M^tU^{t,T})-Y)^TM^t +\lambda U^t)$$
-This has to be performed max\_iter number of times.
+update M and U using gradient descent method :  
+$$M^{t+1} =  M^t - \alpha(R\cdot(M^tU^{t,T}-Y)U^t +\lambda M^t)$$  
+$$U^{t+1} =  U^t - \alpha((R\cdot(M^tU^{t,T})-Y)^TM^t +\lambda U^t)$$  
+This has to be performed $$max\_iter$$ number of times.
 
 Formulate the loss function
 ---------------------------
@@ -319,45 +319,45 @@ Formulate the loss function
 Everytime after updating M and U, write code to check for the
 convergence. We can assume convergence if the calculated error using the
 formula below is less than a threshold 0.0001. If the convergence
-condition is met we should stop the gradient calculation.
+condition is met we should stop the gradient calculation.  
 $$\frac{||M^{t+1}-M^t||^2_F+||U^{t+1}-U^t||^2_F }{||M^t||^2_F+||U^t||^2_F} < \epsilon$$
 
 Predicted Ratings
 -----------------
 
 After performing all of the above steps, you will end up with an updated
-M and U matrix. Lets call them M\_result and U\_result and assign them
+M and U matrix. Lets call them $$M\_result$$ and $$U\_result$$ and assign them
 to these two new variables. Now we can obtain the predicted ratings
-matrix by calculating the dot product of M\_result and U\_result.
+matrix by calculating the dot product of $$M\_result$$ and $$U\_result$$.
 
 Calculate Error
 ---------------
 
 Now that you have the predicted ratings matrix, let’s calculate the
-error rate using the test dataset.
+error rate using the test dataset.  
 $$error\_rate = \frac{||test\_R \cdot (predicted\_matrix - test\_Y)||^2_F}{||test\_Y||^2_F}$$
 
 Varying number of features
 --------------------------
 
 Now let’s try and analyze how varying the number of features in M and U
-matrices impacts the accuracy. Plot a graph between error\_rate on Y
-axis and num\_of\_features on X axis. What do you observe? what is the
+matrices impacts the accuracy. Plot a graph between $$error\_rate$$ on Y
+axis and $$num\_of\_features$$ on X axis. What do you observe? what is the
 best value of number of features? Take atleast 10 values ranging from
 min to max number of features.
 
 Varying regularization parameter
 --------------------------------
 
-Now let’s analyze how varying $\lambda$ impacts the accuracy. Plot a
-graph between error\_rate on Y axis and $\lambda$ on X axis. What do you
+Now let’s analyze how varying $$\lambda$$ impacts the accuracy. Plot a
+graph between $$error\_rate$$ on Y axis and $$\lambda$$ on X axis. What do you
 observe? what is the best value of lambda? Take logarithmic values of
 lambda( i.e 0.01, 0.1 etc). Take at least 10 values.
 
 Varying learning rate
 ---------------------
 
-Also analyze how varying $\alpha$ impacts the convergence rate. What
+Also analyze how varying $$\alpha$$ impacts the convergence rate. What
 happens if you make alpha too small( like 0.0001 or 0.00001), keeping
 number of iterations as same? Also what if you make alpha too big(like
 1, 10)?
