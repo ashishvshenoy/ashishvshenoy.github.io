@@ -7,9 +7,11 @@ This is a blog post going through the steps I followed to build a CNN using Java
 The best test set accuracy achieved using this was 81.46% with 33 test errors in a test set of 178 images.
 
 ## Architecture and Config
-The following image depicts the CNN structure that I built and will be explaining in the following sections.  
+The following image depicts the CNN structure that I built.  
 
 ![CNN.png]({{site.baseurl}}/img/CNN.png)  
+
+The configuration of the network is as follows :  
 
 | Input | 4 x 32 x 32 |
 | Leaky ReLU coefficient | 0.01 |
