@@ -5,7 +5,7 @@ title: How I Built a Convolutional Neural Network in Java
 ---
 **_<mark>Work in progress. I hope to get this done by end of March.</mark>_**
 
-This is a blog post going through the steps I followed to build a CNN using Java to classify and recognize 6 types of images : Airplanes, Flowers, Butterflies, Grand Piano, Starfish and Watches. Disclaimer : This is not the most optimal way to code or build a CNN. This was something I coded within a week in order to learn how CNNs work and understand how backpropogation, early stopping, [dropout](https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf), [ADAM](https://arxiv.org/pdf/1412.6980.pdf) and [Xavier's](http://deepdish.io/2015/02/24/network-initialization/) method work in a deep neural network. So please bear with me and forgive my generous use of for loops and tightly coupled code.  
+This is a blog post going through the steps I followed to build a CNN using Java to classify and recognize 6 types of images : Airplanes, Flowers, Butterflies, Grand Piano, Starfish and Watches. Disclaimer : This is not the most optimal way to code or build a CNN. This was something I coded within a week in order to learn how CNNs work and understand how backpropogation, early stopping, [dropout](https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf), [ADAM](https://arxiv.org/pdf/1412.6980.pdf) and [Xavier's](http://deepdish.io/2015/02/24/network-initialization/) method work in a deep neural network. So please bear with me and forgive my generous use of for loops and tightly coupled code. Also, I have refrained from trying to give a detailed explanation of my code, mainly due to lack of time. But I hope this can serve as a starting point for people who want to implement a CNN and learn through the process.
 The best test set accuracy achieved using this was 81.46% with 33 test errors in a test set of 178 images.
 
 ## Architecture and Config
@@ -25,7 +25,7 @@ The configuration of the network is as follows :
 | Outputs | 6 Sigmoids |
 
 ## Forward Pass - Convolutional Layers
-The logic for the forward pass is pretty straightforward. It's easy to visualize a smaller matrix sliding over a bigger matrix. The details about exactly how the forward pass works is very clearly explained by Andrej Karpathy here : http://cs231n.github.io/convolutional-networks/
+The logic for the forward pass is pretty straightforward. It's easy to visualize a smaller matrix sliding over a bigger matrix. The details about exactly how the forward pass works is very clearly explained by Andrej Karpathy here : [Stanford CS231n](http://cs231n.github.io/convolutional-networks/)
 The Java code that I wrote looks something like this : 
 
 ```java
@@ -69,4 +69,27 @@ public void convolutionLayer(double[][][] input, double[][][][] filter, double[]
 		}
 	}
  ```
+ 
+ ### Forward Pass - Maxpool Layers
+ Just like the convolutional layer, except that instead of applying a convolution function, you would just select the maximum value in a sliding window.
+ ```java
+ public void poolingLayer(double[][][] input, int poolSize, int stride, double[][][] output) {
+		for (int inputPlate = 0; inputPlate < input.length; inputPlate++) {
+			int outputRow = 0;
+			int outputCol = 0;
+			for (int row = 0; row < input[inputPlate].length; row += stride) {
+				for (int col = 0; col < input[inputPlate][0].length; col += stride) {
+					if (col + poolSize > input[inputPlate][0].length || row + poolSize > input[inputPlate].length) {
+						break;
+					}
+					double[][] submatrix = submatrix(input[inputPlate], row, col, poolSize);
+					output[inputPlate][outputRow][outputCol] = maxPool(submatrix);
+					outputCol++;
+				}
+				outputRow++;
+				outputCol = 0;
+			}
+		}
+	}
+    ```
 
