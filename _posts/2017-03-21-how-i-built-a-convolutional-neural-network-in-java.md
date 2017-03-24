@@ -70,6 +70,7 @@ public void convolutionLayer(double[][][] input, double[][][][] filter, double[]
 	}
  ```
  
+ 
  ## Forward Pass - Maxpool Layers
  Just like the convolutional layer, except that instead of applying a convolution function, you would just select the maximum value in a sliding window.
  
@@ -92,5 +93,5 @@ public void convolutionLayer(double[][][] input, double[][][][] filter, double[]
 			}
 		}
 	}
-    ```
+```
 
