@@ -74,8 +74,8 @@ public void convolutionLayer(double[][][] input, double[][][][] filter, double[]
  ## Forward Pass - Maxpool Layers
  Just like the convolutional layer, except that instead of applying a convolution function, you would just select the maximum value in a sliding window.
  
- ```java
- public void poolingLayer(double[][][] input, int poolSize, int stride, double[][][] output) {
+```java
+public void poolingLayer(double[][][] input, int poolSize, int stride, double[][][] output) {
 		for (int inputPlate = 0; inputPlate < input.length; inputPlate++) {
 			int outputRow = 0;
 			int outputCol = 0;
