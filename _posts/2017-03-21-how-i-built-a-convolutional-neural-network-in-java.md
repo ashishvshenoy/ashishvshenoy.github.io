@@ -23,3 +23,50 @@ The configuration of the network is as follows :
 | Maxpool2 Kernel | 16 x 2 x 2, Stride : 2 |
 | Fully Connected Leaky ReLU Hidden Units | 1000 |
 | Outputs | 6 Sigmoids |
+
+## Forward Pass - Convolutional Layers
+The logic for the forward pass is pretty straightforward. It's easy to visualize a smaller matrix sliding over a bigger matrix. The details about exactly how the forward pass works is very clearly explained by Andrej Karpathy here : http://cs231n.github.io/convolutional-networks/
+The Java code that I wrote looks something like this : 
+
+```
+public void convolutionLayer(double[][][] input, double[][][][] filter, double[] bias, int stride,
+			double[][][] output, double[][][] dropOutMask, boolean isTest) {
+		for (int dim = 0; dim < filter.length; dim++) {
+			for (int filterNo = 0; filterNo < filter[dim].length; filterNo++) {
+				for (int row = 0; row < input[filterNo].length; row++) {
+					for (int col = 0; col < input[filterNo][0].length; col++) {
+						if (col + filter[dim][filterNo].length > input[filterNo][0].length
+								|| row + filter[dim][filterNo].length > input[filterNo].length) {
+							break;
+						}
+						double[][] submatrix = submatrix(input[filterNo], row, col, filter[dim][filterNo].length);
+						if (dropOut && dropOutMask != null) {
+							double[][] submatrixMask = submatrix(dropOutMask[filterNo], row, col,
+									filter[dim][filterNo].length);
+							if (isTest)
+								output[dim][row][col] += dropOutRate
+										* convolute(submatrix, submatrixMask, filter[dim][filterNo]);
+							else {
+								output[dim][row][col] += convolute(submatrix, submatrixMask, filter[dim][filterNo]);
+							}
+						} else {
+							output[dim][row][col] += convolute(submatrix, filter[dim][filterNo]);
+						}
+					}
+				}
+			}
+		}
+
+		for (int i = 0; i < output.length; i++) {
+			for (int j = 0; j < output[i].length; j++) {
+				for (int k = 0; k < output[i][j].length; k++) {
+					if (!dropOut || dropOutMask == null)
+						output[i][j][k] = Utilities.leakyRelu(output[i][j][k] + biasInitialValue * bias[i]);
+					else
+						output[i][j][k] = Utilities.leakyRelu(output[i][j][k] + biasInitialValue * bias[i]);
+				}
+			}
+		}
+	}
+ ```
+
