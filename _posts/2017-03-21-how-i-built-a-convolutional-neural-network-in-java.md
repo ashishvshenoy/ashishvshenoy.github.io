@@ -3,7 +3,7 @@ layout: post
 published: true
 title: How I Built a Convolutional Neural Network in Java
 ---
-**_<mark>Work in progress. I hope to get this done by end of March.</mark>_**
+**_<mark>Work in progress. I hope to finish this blog post by end of March.</mark>_**
 
 This is a blog post going through the steps I followed to build a CNN using Java to classify and recognize 6 types of images : Airplanes, Flowers, Butterflies, Grand Piano, Starfish and Watches. Disclaimer : This is not the most optimal way to code or build a CNN. This was something I coded within a week in order to learn how CNNs work and understand how backpropogation, early stopping, [dropout](https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf), [ADAM](https://arxiv.org/pdf/1412.6980.pdf) and [Xavier's](http://deepdish.io/2015/02/24/network-initialization/) method work in a deep neural network. So please bear with me and forgive my generous use of for loops and tightly coupled code. Also, I have refrained from trying to give a detailed explanation of my code, mainly due to lack of time. But I hope this can serve as a starting point for people who want to implement a CNN and learn through the process.
 The best test set accuracy achieved using this was 81.46% with 33 test errors in a test set of 178 images.
