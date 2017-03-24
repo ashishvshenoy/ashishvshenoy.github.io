@@ -28,7 +28,7 @@ The configuration of the network is as follows :
 The logic for the forward pass is pretty straightforward. It's easy to visualize a smaller matrix sliding over a bigger matrix. The details about exactly how the forward pass works is very clearly explained by Andrej Karpathy here : http://cs231n.github.io/convolutional-networks/
 The Java code that I wrote looks something like this : 
 
-```
+```java
 public void convolutionLayer(double[][][] input, double[][][][] filter, double[] bias, int stride,
 			double[][][] output, double[][][] dropOutMask, boolean isTest) {
 		for (int dim = 0; dim < filter.length; dim++) {
