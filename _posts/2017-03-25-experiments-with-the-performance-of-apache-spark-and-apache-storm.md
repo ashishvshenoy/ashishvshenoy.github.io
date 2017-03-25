@@ -71,8 +71,46 @@ partitioning.
 |<strong>Metric</strong>| <strong>Trial 1</strong>| <strong>Trial 2</strong>| <strong>Trial 3</strong>|
 |Completion Time in min| 1.9| 1.8| 1.8|
 |Disk Reads in MB| 871| 868| 870|
-|DiskWrite in MB| 692| 687| 690|
+|Disk Write in MB| 692| 687| 690|
 |N/W Reads in MB| 1554| 1554| 1550|
 |N/W Writes in MB| 2676| 2676| 2670|
 |Number of Tasks| 208| 208| 208|
+
+As is evident from the data above, custom partitioning definitely improved the performance of the application. The completion time fell by 60%, the disk read and writes reduced considerably and the combined network read/write data which is usually an indicator of data moved around in shuffles, also reduced when compared to the application without custom partitioning.
+
+## Performance with persistence
+
+The following table lists the metrics I observed by caching links and ranks RDD with _numPartitions_
+set to 16. 
+I cached the links RDD when it gets first created. ranks RDD is cached for every iteration. Since ranks RDD is a small dataset, I felt caching it in every iteration is worth the performance overhead. This was corroborated by the data obtained.
+
+|<strong>Metric</strong>| <strong>Trial 1</strong>| <strong>Trial 2</strong>| <strong>Trial 3</strong>|
+|Completion Time in min| 1.2| 1.2| 1.1|
+|Disk Reads in MB| 865| 864| 866|
+|Disk Write in MB| 33| 32| 38|
+|N/W Reads in MB| 19.4| 19.5| 19.3|
+|N/W Writes in MB| 647| 648| 650|
+|Number of Tasks| 208| 208| 208|
+
+As indicated by the above data, we can see that caching the RDDs does improve the performance of the application. I noticed a considerable drop in the amount of data read and written during shuffles. This is indicated by the N/W Read andWrite data in the above table. Since Spark is lazy and does computation and transformation of all the RDDs only when an action is encountered, persisting certain RDDs in iterative applications such as PageRank is beneficial since recomputations can be avoided.  
+
+_PS : I increased the per executor memory to 2g since my application was crashing with
+lesser memory._
+
+## Stage Level DAGs for the above applications
+
+Below was the stage level DAG for PageRank without custom partitioning :
+
+![Stage Level DAG for PageRank Without Custom Partitioning Spark UI]({{site.baseurl}}/img/Screen Shot 2017-03-25 at 11.52.04 AM.png)
+
+Below was the stage level DAG for PageRank with custom partitioning. We can see that between every iteration one stage (the partitionBy and mapPartitions) is eliminated because of co-partitioning:
+
+![Stage Level DAG for PageRank With Custom Partitioning Spark UI]({{site.baseurl}}/img/Screen%20Shot%202017-03-25%20at%2011.54.02%20AM.png)
+
+Below was the stage level DAG for PageRank with custom partitioning and persistence. The green dots indicate the cached RDDs being used :
+
+![Stage Level DAG for PageRank With Custom Partitioning and Persistence Spark UI]({{site.baseurl}}/img/Screen Shot 2017-03-25 at 11.56.17 AM.png)
+
+
+
 
