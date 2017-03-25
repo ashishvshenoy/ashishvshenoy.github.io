@@ -68,7 +68,7 @@ lines = spark.sparkContext.textFile(sys.argv[1],partitions)
 The table below shows us the performance metrics of the PageRank application with custom
 partitioning.
 
-|Metric| Trial 1| Trial 2| Trial 3|
+|<strong>Metric</strong>| <strong>Trial 1</strong>| <strong>Trial 2</strong>| <strong>Trial 3</strong>|
 |Completion Time in min| 1.9| 1.8| 1.8|
 |Disk Reads in MB| 871| 868| 870|
 |DiskWrite in MB| 692| 687| 690|
