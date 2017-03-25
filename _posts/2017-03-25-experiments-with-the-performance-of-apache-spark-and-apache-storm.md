@@ -55,10 +55,12 @@ This value was arrived at after considering the fact that we had 4 executors wit
 
 * In order to make the dependencies narrow in the join operation of links and ranks, I partitioned both the RDDs with the same partitioning scheme. 
 * By default pyspark uses HashPartitioner to partition on keys of a RDD. Since both links and ranks RDD had the same numeric keys, by using _partitionBy(numPartitions)_ I was able to co-partition the RDDs. You can verify the co-partitioning by persisting the RDDs using _saveAsTextFile_ and checking if the number of partitions are equal.
-* I found that the number of tasks spawned to read files from HDFS depends on the number of blocks and their locality. This number of tasks in turn determines its initial partition. To efficiently parallelize the I/O from HDFS while reading, I specified the partitions to be 16 and observed a noticeable improvement in performance. I read the dataset from the HDFS using the following syntax.
+* I found that the number of tasks spawned to read files from HDFS depends on the number of blocks and their locality. This number of tasks in turn determines its initial partition. To efficiently parallelize the I/O from HDFS while reading, I specified the partitions to be 16 and observed a noticeable improvement in performance. I read the dataset from the HDFS using the following syntax.  
+
 ```
 lines = spark.sparkContext.textFile(sys.argv[1],partitions)
 ```
+
 'partitions' was set to 16.
 * I also realized that some of the operations do not preserve parent partitioning scheme (Eg: map). Hence its important to use _mapValues_ while creating ranks RDD from links in order to preserve the same partitioning scheme for both.
 – Also, the _flatMap_ operation used on the RDD obtained after joining links and ranks, loses the partitioning information of its parent. In order to mitigate that I used _partitionBy(numPartitions)_ on ranks after every iteration. Since ranks is a much smaller RDD compared to links, the time and resources spent on doing this in every iteration is negligible.  
