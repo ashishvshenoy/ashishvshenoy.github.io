@@ -24,7 +24,7 @@ PageRank is an algorithm that is used by Google Search to rank websites in their
 
 ## Code
 
-The python implementation of the PageRank algorithm in Spark along with the shell scripts to run it can be found here : (https://github.com/ashishvshenoy/pagerank-spark)
+The python implementation of the PageRank algorithm in Spark along with the shell scripts to run it can be found here : [Github](https://github.com/ashishvshenoy/pagerank-spark)
 
 ## Performance without any custom partitioning
 
