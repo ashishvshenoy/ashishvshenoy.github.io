@@ -2,6 +2,10 @@
 layout: post
 published: true
 title: Experiments with the performance of Apache Spark and Apache Storm
+description: Experiments with the performance of Apache Spark and Apache Storm
+keywords: >-
+  Apache Spark, Custom Partitioning, Co-Partitioning, RDDs, persistence, dag,
+  caching, partitioning, hashpartitioner, optimize, performance, speed, memory
 ---
 ## Summary
 
@@ -110,7 +114,3 @@ Below was the stage level DAG for PageRank with custom partitioning. We can see 
 Below was the stage level DAG for PageRank with custom partitioning and persistence. The green dots indicate the cached RDDs being used :
 
 ![Stage Level DAG for PageRank With Custom Partitioning and Persistence Spark UI]({{site.baseurl}}/img/Screen Shot 2017-03-25 at 11.56.17 AM.png)
-
-
-
-
