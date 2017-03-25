@@ -63,7 +63,7 @@ lines = spark.sparkContext.textFile(sys.argv[1],partitions)
 
 'partitions' was set to 16.
 * I also realized that some of the operations do not preserve parent partitioning scheme (Eg: map). Hence its important to use _mapValues_ while creating ranks RDD from links in order to preserve the same partitioning scheme for both.
-– Also, the _flatMap_ operation used on the RDD obtained after joining links and ranks, loses the partitioning information of its parent. In order to mitigate that I used _partitionBy(numPartitions)_ on ranks after every iteration. Since ranks is a much smaller RDD compared to links, the time and resources spent on doing this in every iteration is negligible.  
+* Also, the _flatMap_ operation used on the RDD obtained after joining links and ranks, loses the partitioning information of its parent. In order to mitigate that I used _partitionBy(numPartitions)_ on ranks after every iteration. Since ranks is a much smaller RDD compared to links, the time and resources spent on doing this in every iteration is negligible.  
 
 The table below shows us the performance metrics of the PageRank application with custom
 partitioning.
