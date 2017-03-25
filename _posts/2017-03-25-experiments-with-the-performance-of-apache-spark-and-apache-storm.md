@@ -39,3 +39,14 @@ the SparkSession object was set to 4. I arrived at this value after considering 
 |N/W Reads in MB| 5089| 5060| 5090|
 |N/W Writes in MB| 1814| 1810 |1810|
 |Number of Tasks| 572| 572| 572|
+
+## Performance with custom partitioning
+
+In order to optimize the execution and implement custom partitioning I followed following
+steps.
+### Increased the parallelism
+To increase the parallelism in the executors, the following config was added
+```
+spark.default.parallelism = 16. 
+```
+This value was arrived at after considering the fact that we had 4 executors with 4 cores each. Since we assign one cpu per task, ideally we should run 4 tasks per executor. This brings the count to 4*4=16.
