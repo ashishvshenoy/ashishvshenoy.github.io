@@ -51,7 +51,8 @@ spark.default.parallelism = 16
 ```
 This value was arrived at after considering the fact that we had 4 executors with 4 cores each. Since we assign one cpu per task, ideally we should run 4 tasks per executor. This brings the count to 4*4=16.
 
-### Co-partitioned links and ranks RDD
+### Co-partitioned links and ranks RDD  
+
 * In order to make the dependencies narrow in the join operation of links and ranks, I partitioned both the RDDs with the same partitioning scheme. By default pyspark uses HashPartitioner to partition on keys of a RDD. Since both links and ranks RDD had the same numeric keys, by using _partitionBy(numPartitions)_ I was able to co-partition the RDDs. You can verify the co-partitioning by persisting the RDDs using _saveAsTextFile_ and checking if the number of partitions are equal.
 * I found that the number of tasks spawned to read files from HDFS depends on the number of blocks and their locality. This number of tasks in turn determines its initial partition. To efficiently parallelize the I/O from HDFS while reading, I specified the partitions to be 16 and observed a noticeable improvement in performance. I read the dataset from the HDFS using the following syntax.
 ```
