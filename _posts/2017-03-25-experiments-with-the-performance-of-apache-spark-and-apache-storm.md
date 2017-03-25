@@ -31,3 +31,11 @@ The python implementation of the PageRank algorithm in Spark along with the shel
 As a benchmark, I wrote a Spark application in python for computing PageRank on the given Berkeley-Stanford web graph without any custom partitioning.
 To ensure that the cluster is being fully utilized the spark.executor.instances value in
 the SparkSession object was set to 4. I arrived at this value after considering the environment being used. There were 5 nodes with 4 cores each and the number of cores per executor was set as 4. Considering one entire node for the driver, the number of executors instances was set as 5-1=4 to ensure that the rest of the nodes were utilized correctly and avoid over or under utlization.
+
+|Metric| Trial 1| Trial 2| Trial 3|
+|Completion Time in min| 5.1| 5.0| 5.2|
+|Disk Reads in MB| 995| 990| 997|
+|DiskWrite in MB| 1808| 1808| 1876|
+|N/W Reads in MB| 5089| 5060| 5090|
+|N/W Writes in MB| 1814| 1810 |1810|
+|Number of Tasks| 572| 572| 572|
