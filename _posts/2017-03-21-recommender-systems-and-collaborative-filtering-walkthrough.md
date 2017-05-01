@@ -2,6 +2,10 @@
 layout: post
 published: true
 title: Recommender Systems and Collaborative Filtering - Walkthrough
+description: Recommender Systems and Collaborative Filtering - Walkthrough
+keywords: >-
+  collaborative filtering, svd, matrix factorization, gradient descent, movie
+  recommender, recommender systems, content filtering
 ---
 This is a walkthrough of Collaborative Filteirng that I wrote for a class.
 
