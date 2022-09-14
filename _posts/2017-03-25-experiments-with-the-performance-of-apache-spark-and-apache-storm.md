@@ -114,3 +114,16 @@ Below was the stage level DAG for PageRank with custom partitioning. We can see 
 Below was the stage level DAG for PageRank with custom partitioning and persistence. The green dots indicate the cached RDDs being used :
 
 ![Stage Level DAG for PageRank With Custom Partitioning and Persistence Spark UI]({{site.baseurl}}/img/Screen Shot 2017-03-25 at 11.56.17 AM.png)
+
+
+If you found this work useful please cite as:
+```
+@misc{AshishShenoy_Spark_Storm_Perf,
+  author        = {Shenoy, Ashish},
+  title         = {Experiments with the performance of Apache Spark and Apache Storm},
+  howpublished  = {\url{https://www.ashishvs.in}},
+  year          = {2017},
+  note          = {Accessed: 2017-03-25},
+  url           = {www.ashishvs.in}
+} 
+```
