@@ -374,3 +374,16 @@ of each of them, lets find out the missing ratings in Y. Output the
 result(user, movie, rating) in a text file. Note: use the indicator
 matrix to find out missing entries and round them before writing in text
 file.
+
+
+If you found this work useful please cite as:
+```
+@misc{AshishShenoy_Rec_Sys,
+  author        = {Shenoy, Ashish},
+  title         = {Recommender Systems and Collaborative Filtering - Walkthrough},
+  howpublished  = {\url{https://www.ashishvs.in}},
+  year          = {2017},
+  note          = {Accessed: 2017-03-21},
+  url           = {www.ashishvs.in}
+} 
+```
