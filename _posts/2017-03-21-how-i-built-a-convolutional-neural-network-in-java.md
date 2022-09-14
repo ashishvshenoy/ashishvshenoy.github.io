@@ -448,3 +448,15 @@ public void backprop(double[] outputLabels) {
 		outputHiddenLayerBias_t = outputHiddenLayerBias_t_temp;
 	}
 ```
+
+If you found this work useful please cite as:
+```
+@misc{AshishShenoy_Java_CNN,
+  author        = {Shenoy, Ashish},
+  title         = {Convolutional Neural Network in Java},
+  howpublished  = {\url{https://www.ashishvs.in}},
+  year          = {2017},
+  note          = {Accessed: 2017-03-21},
+  url           = {www.ashishvs.in}
+} 
+```
