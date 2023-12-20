@@ -3,11 +3,13 @@ layout: post
 published: true
 title: Recommender Systems and Collaborative Filtering - Walkthrough
 description: Recommender Systems and Collaborative Filtering - Walkthrough
+date: 2017-03-15 16:40:16
+tags: recsys
 keywords: >-
   collaborative filtering, svd, matrix factorization, gradient descent, movie
   recommender, recommender systems, content filtering
 ---
-This is a walkthrough of Collaborative Filteirng that I wrote for a class.
+This is a walkthrough of Collaborative Filtering that I wrote for a class.
 
 Summary
 =======
