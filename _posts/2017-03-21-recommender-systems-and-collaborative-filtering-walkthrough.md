@@ -21,7 +21,7 @@ these days to solve this problem by searching through a large volume of
 dynamically generated information to provide users with personalized
 content and services. See Figure 1 [1]((https://www.ischool.utexas.edu/~i385q/readings/Balabanovic_Shoham-1997-Fab.pdf)).  
 
-![RecommenderSystem.png]({{site.baseurl}}/img/RecommenderSystem.png)
+![RecommenderSystem.png]({{site.baseurl}}/assets/img/RecommenderSystem.png)
 
 
 After completing this walkthrough you should be able to :
@@ -71,13 +71,13 @@ Recommender systems typically produce a list of recommendations in one of two wa
     Sometimes the above two approaches are often combined and termed as
     Hybrid Recommender Systems.
     
-![coll_filter.jpg]({{site.baseurl}}/img/coll_filter.jpg)
+![coll_filter.jpg]({{site.baseurl}}/assets/img/coll_filter.jpg)
 
-![content_based.jpg]({{site.baseurl}}/img/content_based.jpg)
+![content_based.jpg]({{site.baseurl}}/assets/img/content_based.jpg)
 
-![spotify_recommendation.png]({{site.baseurl}}/img/spotify_recommendation.png)
+![spotify_recommendation.png]({{site.baseurl}}/assets/img/spotify_recommendation.png)
 
-![amazon_collab.png]({{site.baseurl}}/img/amazon_collab.png)
+![amazon_collab.png]({{site.baseurl}}/assets/img/amazon_collab.png)
 
 
 The differences between collaborative and content-based filtering can be
@@ -132,7 +132,7 @@ information as a matrix such as the one in figure .
 Our task now is to predict the ratings for all the entries with ?. We
 will use low dimensional matrix factorization method to accomplish this.  
 
-![matrix1.png]({{site.baseurl}}/img/matrix1.png)
+![matrix1.png]({{site.baseurl}}/assets/img/matrix1.png)
 
 Low Dimensional Matrix Factorization
 ------------------------------------
@@ -152,7 +152,7 @@ matrices P($$m \times k$$) and Q($$n  \times k$$) such that their product
 approximates R. See Figure below. Note:
 $$k \ll m,n$$ $$R \approx P \times Q^T = \widehat{R}$$  
 
-![MatrixFactorization.png]({{site.baseurl}}/img/MatrixFactorization.png)
+![MatrixFactorization.png]({{site.baseurl}}/assets/img/MatrixFactorization.png)
 
 
 **Why not SVD?**  
@@ -178,7 +178,7 @@ about which it has not yet gathered sufficient information.
 Gradient Descent
 ----------------
 
-![gradient_descen.png]({{site.baseurl}}/img/gradient_descen.png)
+![gradient_descen.png]({{site.baseurl}}/assets/img/gradient_descen.png)
 
 How do we now find the matrices P and Q? The idea
 behind finding the values for these two matrices is that their products
