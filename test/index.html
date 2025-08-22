@@ -22,10 +22,7 @@
   id="bg-music"
   src="/assets/audio/bg1.mp3"
   loop
-  autoplay
-  muted
   preload="auto"
-  playsinline
   crossOrigin="anonymous"></audio>
 
   <div id="root"></div>
@@ -181,6 +178,22 @@
     }
     const easeInOut = t => (t<.5? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2);
 
+    function TopSoundBar({ soundReady, onEnable }) {
+      return (
+        <div className="sticky top-0 z-20 flex justify-end pt-3">
+          {!soundReady && (
+            <button
+              onClick={onEnable}
+              className="px-3 py-1 rounded-full border bg-emerald-600 text-white hover:bg-emerald-500 shadow"
+              aria-label="Enable Sound"
+            >
+              🔊 Enable sound
+            </button>
+          )}
+        </div>
+      );
+    }
+
     // --- Component ---
     function BabyReveal() {
       const { useState, useEffect, useRef } = React;
@@ -229,6 +242,23 @@
         { s: "eval",     txt: "ROC-AUC: 0.99 — SnackScore: 11/10" },
         { s: "package",  txt: "$ package --format=bundle-of-joy" },
       ];
+
+      function enableAllSound() {
+        // Unlock WebAudio-based SFX
+        const ok = sfx.unlock();
+        setSoundReady(ok);
+
+        // Start background music
+        const bg = document.getElementById("bg-music");
+        if (bg) {
+          try {
+            bg.currentTime = 0;
+            bg.volume = 0.6; // adjust if you want softer/louder
+            const p = bg.play();
+            if (p && p.catch) p.catch(() => {});
+          } catch {}
+        }
+      }
 
       function start() {
         if (runningBuild) return;
@@ -325,6 +355,7 @@
         <div className={"min-h-screen w-full relative " + bgClasses + " text-zinc-800 dark:text-zinc-100"}>
           <div className="relative max-w-4xl mx-auto px-4 py-10">
             <Header dark={dark} setDark={setDark} />
+            <TopSoundBar soundReady={soundReady} onEnable={enableAllSound} />
             <Hero revealed={revealed} stage={stage} />
 
             <BuildProgress progress={progressBuild} stage={stage} />
@@ -345,7 +376,7 @@
             {revealed && (<ModelMetrics acc={accuracy} loss={loss} />)}
             {revealed && (<MetricsVisuals acc={accuracy} loss={loss} />)}
 
-            <Controls soundReady={soundReady} onEnableSound={() => { const ok = sfx.unlock(); setSoundReady(ok); }} />
+            <Controls />
             <Footer />
 
             {/* Hidden audio tags for epoch/reveal SFX */}
@@ -414,34 +445,12 @@
             <div className="flex-1" />
             {title === 'build' && (
               <button
-                onClick={() => {
-                  // Unmute + play immediately on user gesture
-                  const bg = document.getElementById("bg-music");
-                  if (bg) {
-                    bg.muted = false;
-                    bg.volume = 0.0;
-                    bg.play().then(() => {
-                      // fade in volume
-                      const target = 0.6;
-                      const steps = 15, ms = 1500;
-                      const step = target / steps;
-                      let i = 0;
-                      const fade = setInterval(() => {
-                        i++;
-                        bg.volume = Math.min(target, bg.volume + step);
-                        if (i >= steps) clearInterval(fade);
-                      }, Math.round(ms / steps));
-                    }).catch(() => {});
-                  }
-                  // now call the reveal sequence
-                  onRun();
-                }}
+                onClick={onRun}
                 disabled={running}
                 className={`px-3 py-1 rounded-md border transition-colors ${running ? "opacity-60 cursor-not-allowed bg-zinc-800/60 border-zinc-700" : "bg-emerald-600 border-emerald-700 text-white hover:bg-emerald-500"}`}
               >
                 {running ? "Running…" : "Run Reveal ▶"}
               </button>
-
             )}
           </div>
           <div className="p-4 min-h-[260px] space-y-3">
@@ -625,35 +634,14 @@
       );
     }
 
-    function Controls({ soundReady, onEnableSound }){
+    function Controls(){
       return (
         <div className="mb-8 grid md:grid-cols-1 gap-3">
           <div className="rounded-xl border bg-white dark:bg-zinc-950 border-zinc-200 dark:border-zinc-800 p-3 text-sm opacity-80 flex items-center justify-between">
             <span className="text-xs opacity-70">(click “Run Reveal ▶” to start)</span>
-            <div className="flex items-center gap-2">
-              {!soundReady && (
-                <button onClick={onEnableSound} className="px-3 py-1 rounded-full border bg-emerald-600 text-white hover:bg-emerald-500">🔊 Enable SFX</button>
-              )}
-              <BackgroundMusicToggle />
-            </div>
+            {/* Sound controls moved to TopSoundBar */}
           </div>
         </div>
-      );
-    }
-
-    function BackgroundMusicToggle(){
-      const { useState } = React;
-      const [playing, setPlaying] = useState(false);
-      function toggle(){
-        const el = document.getElementById("bg-music");
-        if (!el) return;
-        if (playing) { el.pause(); } else { el.play().catch(()=>{}); }
-        setPlaying(!playing);
-      }
-      return (
-        <button onClick={toggle} className="px-3 py-1 rounded-full border bg-indigo-600 text-white hover:bg-indigo-500">
-          {playing ? "⏸ Pause Music" : "▶ Play Music"}
-        </button>
       );
     }
 
