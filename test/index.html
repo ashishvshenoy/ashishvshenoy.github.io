@@ -101,37 +101,12 @@
 
     // --- Countdown ASCII (5 → 1 → baby). Pure ASCII art ---
     const COUNTDOWN_ASCII = [
-      // idx 5,4,3,2,1,0
-      `  ██████
-        ██     
-        ██████ 
-             ██
-        ██████  `,
-      `     ██
-       █  ███
-         ██  
-         ██  
-      █████████`,
-      `  ██████
-           ██
-        ███  
-           ██
-        ██████  `,
-      `   ████
-      ██    ██
-           ██
-         ██
-      █████████`,
-      `     ██
-        ████
-          ██
-          ██
-         ████`,
-      `   (•ᴗ•)  
-      ( ｡• ｡)  baby time!
-      /)   )
-      /  ♥  
-      👶`
+      "👶 Baby time!",
+      "1 🍼",
+      "2 🍼🍼",
+      "3 🍼🍼🍼",
+      "4 ⭐⭐⭐⭐",
+      "5 ⭐⭐⭐⭐⭐"
     ];
 
     // --- Sound Effects (Web Audio + optional <audio> samples) ---
@@ -355,7 +330,6 @@
         <div className={"min-h-screen w-full relative " + bgClasses + " text-zinc-800 dark:text-zinc-100"}>
           <div className="relative max-w-4xl mx-auto px-4 py-10">
             <Header dark={dark} setDark={setDark} />
-            <TopSoundBar soundReady={soundReady} onEnable={enableAllSound} />
             <Hero revealed={revealed} stage={stage} />
 
             <BuildProgress progress={progressBuild} stage={stage} />
