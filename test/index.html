@@ -18,7 +18,14 @@
 </head>
 <body class="min-h-screen">
   <!-- Background music element (looping). Update the src to your lullaby. -->
-  <audio id="bg-music" src="/assets/audio/bg1.mp3" loop preload="auto" crossOrigin="anonymous"></audio>
+  <audio
+  id="bg-music"
+  src="/assets/audio/bg1.mp3"
+  loop
+  autoplay
+  muted
+  preload="auto"
+  crossOrigin="anonymous"></audio>
 
   <div id="root"></div>
 
@@ -228,6 +235,27 @@
         setBuildStatic([]); setBuildCurrent(""); setBuildShow(false);
         setProgressBuild(0); setRevealed(false); setEpochCount(0); setCountdown(null);
         const ok = sfx.unlock(); setSoundReady(ok);
+        // --- Fade in background music (from muted autoplay) ---
+        const bg = document.getElementById("bg-music");
+        if (bg) {
+          try {
+            bg.muted = false;        // unmute now that we have a user gesture
+            const target = 0.6;      // final volume (0.0–1.0)
+            const steps = 15;        // fade granularity
+            const ms = 1500;         // fade duration
+            const step = (target - (bg.volume || 0)) / steps;
+            let i = 0;
+            // ensure starting point (some browsers start at 1.0)
+            bg.volume = 0.0;
+            const fade = setInterval(() => {
+              i++;
+              bg.volume = Math.min(target, bg.volume + step);
+              if (i >= steps) clearInterval(fade);
+            }, Math.round(ms / steps));
+            // make sure playback is running
+            bg.play().catch(()=>{});
+          } catch {}
+        }
         runBuildSequence(0);
       }
 
