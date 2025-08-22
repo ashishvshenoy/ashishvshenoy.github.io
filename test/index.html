@@ -20,11 +20,12 @@
   <!-- Background music element (looping). Update the src to your lullaby. -->
   <audio
   id="bg-music"
-  src="/assets/audio/bg1.mp3"
+  src="/assets/audio/background.mp3"
   loop
   autoplay
   muted
   preload="auto"
+  playsinline
   crossOrigin="anonymous"></audio>
 
   <div id="root"></div>
@@ -413,12 +414,34 @@
             <div className="flex-1" />
             {title === 'build' && (
               <button
-                onClick={onRun}
+                onClick={() => {
+                  // Unmute + play immediately on user gesture
+                  const bg = document.getElementById("bg-music");
+                  if (bg) {
+                    bg.muted = false;
+                    bg.volume = 0.0;
+                    bg.play().then(() => {
+                      // fade in volume
+                      const target = 0.6;
+                      const steps = 15, ms = 1500;
+                      const step = target / steps;
+                      let i = 0;
+                      const fade = setInterval(() => {
+                        i++;
+                        bg.volume = Math.min(target, bg.volume + step);
+                        if (i >= steps) clearInterval(fade);
+                      }, Math.round(ms / steps));
+                    }).catch(() => {});
+                  }
+                  // now call the reveal sequence
+                  onRun();
+                }}
                 disabled={running}
                 className={`px-3 py-1 rounded-md border transition-colors ${running ? "opacity-60 cursor-not-allowed bg-zinc-800/60 border-zinc-700" : "bg-emerald-600 border-emerald-700 text-white hover:bg-emerald-500"}`}
               >
                 {running ? "Running…" : "Run Reveal ▶"}
               </button>
+
             )}
           </div>
           <div className="p-4 min-h-[260px] space-y-3">
