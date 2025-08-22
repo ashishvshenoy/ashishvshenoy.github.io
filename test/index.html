@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Project Stork — Baby Reveal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- React 18 (UMD) + ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- Babel to transpile inline JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="min-h-screen">
+  <div id="root"></div>
+
+  <!-- Paste your component below. IMPORTANT: small tweaks described right after. -->
+  <script type="text/babel">
+    /* 1) REMOVE the first line `import React from "react";` (React is global here)
+       2) CHANGE `export default function BabyReveal()` to just `function BabyReveal()` 
+       3) Paste the rest of the component file here (everything starting from CONFIG ... to the end)
+       4) If you want sound files, add them to /assets/audio and set CONFIG.sfx URLs accordingly
+    */
+
+    // ...paste your component here...
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<BabyReveal />);
+  </script>
+</body>
+</html>
