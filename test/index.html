@@ -18,7 +18,14 @@
 </head>
 <body class="min-h-screen">
   <!-- Background music element (looping). Update the src to your lullaby. -->
-  <audio id="bg-music" src="/assets/audio/bg1.mp3" loop preload="auto" crossOrigin="anonymous"></audio>
+  <audio id="bg-music"
+       src="/assets/audio/background.mp3"
+       loop
+       autoplay
+       muted
+       preload="auto"
+       crossOrigin="anonymous"></audio>
+
 
   <div id="root"></div>
 
@@ -223,6 +230,12 @@
       ];
 
       function start() {
+        const bg = document.getElementById("bg-music");
+        if (bg) {
+          bg.muted = false;   // unmute
+          bg.volume = 0.6;    // optional
+          bg.play().catch(()=>{});
+        }
         if (runningBuild) return;
         setRunningBuild(true);
         setBuildStatic([]); setBuildCurrent(""); setBuildShow(false);
