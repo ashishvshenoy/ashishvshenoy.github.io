@@ -48,6 +48,12 @@ layout: default
             <!-- Selected papers -->
             {%- include selected_papers.html %}
           {%- endif %}
+          {% if page.selected_patents %}
+          <div class="publications">
+            <h2>selected patents</h2>
+            {% bibliography -f patents -q @*[selected=true]* %}
+          </div>
+          {% endif %}
           {%- if page.social %}
           <!-- Social -->
           <div class="social">
