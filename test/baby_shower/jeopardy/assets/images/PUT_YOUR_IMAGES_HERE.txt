@@ -1,0 +1,3 @@
+Drop your local images in this folder.
+Example filenames: bluey.jpg, pokeball.png
+Then reference them in questions.js as: "assets/images/bluey.jpg"

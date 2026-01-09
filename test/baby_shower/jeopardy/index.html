@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Baby Shower Jeopardy Tournament</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="logo">🍼</div>
+      <div>
+        <div class="title">Baby Shower Jeopardy — Tournament</div>
+        <div class="subtitle">4 players per round • 4 categories × 2 questions • winners advance • timed questions</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="btnOpenSettings" class="btn secondary">Questions / Settings</button>
+      <button id="btnResetAll" class="btn danger">Reset Tournament</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- SETUP / ROUND SELECT -->
+    <section id="setupView" class="card">
+      <h2>Start a Round</h2>
+
+      <div class="grid2">
+        <div class="field">
+          <label>Round</label>
+          <select id="roundSelect"></select>
+          <div class="hint">You’ll play <strong>4 initial rounds</strong> (20 guests ÷ 4) and then a <strong>Final</strong> with round winners.</div>
+        </div>
+
+        <div class="field">
+          <label>Timer (seconds per question)</label>
+          <input id="timerSeconds" type="number" min="5" max="120" step="1" value="25"/>
+          <div class="hint">Default 25 seconds. Adjustable per round.</div>
+        </div>
+      </div>
+
+      <div class="players">
+        <h3>Players (4)</h3>
+        <div class="playerGrid">
+          <div class="field"><label>Player 1</label><input id="p1" placeholder="Name"/></div>
+          <div class="field"><label>Player 2</label><input id="p2" placeholder="Name"/></div>
+          <div class="field"><label>Player 3</label><input id="p3" placeholder="Name"/></div>
+          <div class="field"><label>Player 4</label><input id="p4" placeholder="Name"/></div>
+        </div>
+
+        <div class="row">
+          <button id="btnStartRound" class="btn">Start Round</button>
+          <button id="btnQuickFill" class="btn secondary">Quick Fill (A, B, C, D)</button>
+        </div>
+
+        <div class="hint" id="setupHint"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="tournamentStatus">
+        <h3>Tournament Status</h3>
+        <div id="statusBox" class="statusBox"></div>
+      </div>
+    </section>
+
+    <!-- GAME BOARD -->
+    <section id="boardView" class="card hidden">
+      <div class="boardHeader">
+        <div>
+          <h2 id="boardTitle">Round</h2>
+          <div id="boardSub" class="subtitle"></div>
+        </div>
+        <div class="boardHeaderRight">
+          <div class="timerBox">
+            <div class="timerLabel">Timer</div>
+            <div id="timerDisplay" class="timerDisplay">00:25</div>
+            <div class="timerButtons">
+              <button id="btnTimerStart" class="btn small">Start</button>
+              <button id="btnTimerPause" class="btn small secondary">Pause</button>
+              <button id="btnTimerReset" class="btn small secondary">Reset</button>
+            </div>
+          </div>
+          <button id="btnEndRound" class="btn secondary">End Round</button>
+        </div>
+      </div>
+
+      <div id="scoreboard" class="scoreboard"></div>
+
+      <div id="board" class="board"></div>
+
+      <div class="hint">Host flow: click a tile → read clue → start timer → reveal answer → mark Correct/Wrong for a player.</div>
+    </section>
+
+  </main>
+
+  <!-- QUESTION MODAL -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Question">
+    <div class="modalCard">
+      <div class="modalTop">
+        <div class="pill" id="modalCategory">Category</div>
+        <div class="value" id="modalValue">$100</div>
+      </div>
+
+      <div id="modalQuestion" class="modalQuestion">Question</div>
+
+      <div id="modalImage" class="modalImage hidden"></div>
+
+      <div id="modalAnswerBox" class="modalAnswer hidden">
+        <div class="modalAnswerTitle">Answer</div>
+        <div id="modalAnswer">Answer text</div>
+      </div>
+
+      <div class="modalActions">
+        <button id="btnReveal" class="btn">Reveal Answer</button>
+        <button id="btnToggleImage" class="btn secondary">Reveal image</button>
+        <button id="btnCloseModal" class="btn secondary">Close</button>
+        <button id="btnPlayAudio" class="btn secondary">Play audio</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="adjudicate">
+        <div class="adjudicateTitle">Score this question</div>
+        <div id="adjudicateButtons" class="adjudicateButtons"></div>
+        <div class="hint smallHint">Correct adds points. Wrong subtracts points. Or just close if no one answered.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS / QUESTION EDITOR -->
+  <div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Settings">
+    <div class="modalCard wide">
+      <div class="modalTop">
+        <div class="pill">Questions / Settings</div>
+        <div class="value">Editor</div>
+      </div>
+
+      <p class="hint">
+        Edit rounds & questions here. This saves to <strong>localStorage</strong> in your browser.
+        To share or back up, copy the JSON and save it as a file.
+      </p>
+
+      <div class="field">
+        <label>Rounds JSON</label>
+        <textarea id="questionsEditor" spellcheck="false"></textarea>
+        <div class="hint smallHint">
+          Structure: <code>[{ id, name, categories: [{ name, clues: [{ value, q, a, imageSvg? }] }]}]</code>
+        </div>
+      </div>
+
+      <div class="row right">
+        <button id="btnRestoreDefault" class="btn secondary">Restore Defaults</button>
+        <button id="btnSaveQuestions" class="btn">Save</button>
+        <button id="btnCloseSettings" class="btn secondary">Close</button>
+      </div>
+
+      <div id="settingsMessage" class="hint"></div>
+    </div>
+  </div>
+
+  <script src="./questions.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
